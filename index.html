@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>switch-blender-animation</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css"
+    />
+    <style>
+      body {
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
+      }
+      .button-field {
+        position: fixed;
+        top: 0;
+        right: 0;
+      }
+      .button {
+        padding: 20px;
+        margin-bottom: 2px;
+        font-size: 12px;
+        background: blue;
+        cursor: pointer;
+        color: #fff;
+      }
+      .button[data-active="true"] {
+        background: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="button-field" id="buttonField"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/109/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r109/examples/js/loaders/GLTFLoader.js"></script>
+    <script src="./script.js"></script>
+  </body>
+</html>
