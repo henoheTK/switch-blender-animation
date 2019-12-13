@@ -6,7 +6,7 @@ let wh = innerHeight;
 let renderer = new THREE.WebGLRenderer();
 let camera = new THREE.PerspectiveCamera(100, ww / wh, 0.01, 10);
 let mixer;
-let currentAction;
+let prevAction;
 const actions = [];
 const field = document.getElementById("buttonField");
 
@@ -33,16 +33,20 @@ loader.load("./sample-anim.glb", gltf => {
     buttonField.appendChild(button);
 
     button.addEventListener("click", () => {
-      if (currentAction) currentAction.fadeOut(0.5);
-      currentAction = action;
-      currentAction
-        .reset()
-        .play()
-        .fadeIn(0.5);
+      if (prevAction) {
+        action
+          .crossFadeFrom(prevAction, 0.5, false)
+          .reset()
+          .play();
+      } else {
+        action.reset().play();
+      }
+
       Array.from(buttonField.children).forEach(child =>
         child.setAttribute("data-active", false)
       );
       button.setAttribute("data-active", true);
+      prevAction = action;
     });
   });
 });
