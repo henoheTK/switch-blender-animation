@@ -31,7 +31,7 @@ loader.load("./sample-anim.glb", gltf => {
     button.classList.add("button");
     button.textContent = action._clip.name;
     buttonField.appendChild(button);
-
+    action.clampWhenFinished = true;
     button.addEventListener("click", () => {
       if (prevAction) {
         action
